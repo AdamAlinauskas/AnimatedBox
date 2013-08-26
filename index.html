@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title> - jsFiddle demo</title>
+  
+  <script type='text/javascript' src='http://code.jquery.com/jquery-2.0.0b1.js'></script>
+  <link rel="stylesheet" type="text/css" href="/css/normalize.css">
+  
+  
+  <link rel="stylesheet" type="text/css" href="/css/result-light.css">
+  
+  <style type='text/css'>
+    .box{
+    width:100px;
+    height:100px;
+    border: 2px solid;
+    box-shadow: 10px 10px 10px #333;
+    -webkit-transition: background-color 5s, left 1s,top 1s,width 2s, height 2s;
+    position:absolute;
+    left:20px;
+    text-align:center;
+    vertical-align:bottom;   
+}
+.box:hover {
+    background-color:#eee;
+}
+  </style>
+  
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+$(document).keydown(function(e){
+    var downKey=40;
+    var rightKey =39;
+    var upKey = 38;   
+    var leftKey = 37;
+    var topLocation = $(".box").position().top;
+    var leftLocation = $(".box").offset().left;
+    
+    var g= 71;
+    var s = 83;
+    
+    var height = $(".box").height();
+    var width = $(".box").width();
+    
+    if(e.keyCode == g){
+        $(".box").height(height+50);
+        $(".box").width(height+50);
+    }
+      
+    if(e.keyCode == s){
+        $(".box").height(height-50);
+        $(".box").width(height-50);
+    }
+    
+    var distance = 200;
+    
+    if(e.keyCode == rightKey){
+        leftLocation += distance;
+        $(".box").css("background-color","green");
+    }
+    if(e.keyCode == leftKey){
+        leftLocation -= distance;
+        $(".box").css("background-color","yellow");        
+    }
+    if(e.keyCode == upKey){
+        topLocation -= distance;
+        $(".box").css("background-color","orange");
+    }
+    if(e.keyCode == downKey){
+        topLocation += distance;
+        $(".box").css("background-color","blue");
+    }
+        
+    $(".box").offset({top:topLocation, left:leftLocation});
+    
+    
+  
+});
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+  <div class="box">Hello</div> 
+  
+</body>
+
+
+</html>
+
